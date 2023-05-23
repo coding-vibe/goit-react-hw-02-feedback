@@ -4,7 +4,7 @@ import Section from '../Section';
 import FeedbackOptions from '../FeedbackOptions';
 import Statistics from '../Statistics';
 
-class FeedbackForm extends Component {
+class FeedbackWidget extends Component {
     state = {
         good: 0,
         neutral: 0,
@@ -53,7 +53,7 @@ class FeedbackForm extends Component {
     }
 }
 
-FeedbackForm.propTypes = {
+FeedbackWidget.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       good: PropTypes.string.isRequired,
@@ -69,4 +69,4 @@ FeedbackForm.propTypes = {
   positivePercentage: PropTypes.number,
 };
 
-export default FeedbackForm;
+export default FeedbackWidget;

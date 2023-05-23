@@ -1,7 +1,7 @@
-import Feedback from './Feedback'
+import FeedbackWidget from './FeedbackWidget'
 
 export const App = () => {
   return (
-    <Feedback />
+    <FeedbackWidget />
   );
 };
