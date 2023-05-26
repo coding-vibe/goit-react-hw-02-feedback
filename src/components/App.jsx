@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Section from './Section';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
+import Notification from './Notification';
 
 class App extends Component {
   state = {
@@ -37,36 +37,22 @@ class App extends Component {
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={{ good: 'good', neutral: 'neutral', bad: 'bad' }}
+            options={[ 'good', 'neutral', 'bad' ]}
             onLeaveFeedback={this.onLeaveFeedback}
           />
+          {totalFeedback > 0 ?
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
             total={totalFeedback}
             positivePercentage={positivePercentage}
-          />
+            /> :
+            <Notification message="There is no feedback" />}
         </Section>
       </>
     );
   }
 }
-
-App.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      good: PropTypes.string.isRequired,
-      neutral: PropTypes.string.isRequired,
-      bad: PropTypes.string.isRequired,
-    }).isRequired
-  ),
-  onLeaveFeedback: PropTypes.func,
-  good: PropTypes.number,
-  neutral: PropTypes.number,
-  bad: PropTypes.number,
-  total: PropTypes.number,
-  positivePercentage: PropTypes.number,
-};
 
 export default App;

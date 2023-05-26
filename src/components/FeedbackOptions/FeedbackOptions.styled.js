@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
-export const OptionsWrapper = styled.div`
+export const OptionsList = styled.ul`
+list-style: none;
 display: flex;
 column-gap: 10px;
+padding-left: 15px;
 `
+
 export const Button = styled.button`
 padding: 5px 10px;
 border-radius: 10px;

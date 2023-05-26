@@ -1,17 +1,33 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { OptionsWrapper, Button } from '../FeedbackOptions/FeedbackOptions.styled.js';
+import { nanoid } from 'nanoid';
+import { OptionsList, Button } from '../FeedbackOptions/FeedbackOptions.styled.js';
 
-const FeedbackOptions = ({ options: { good, neutral, bad }, onLeaveFeedback }) => (
-    <OptionsWrapper>
-        <Button type='button' onClick={() => onLeaveFeedback(good)}>Good</Button>
-        <Button type='button' onClick={() => onLeaveFeedback(neutral)}>Neutral</Button>
-        <Button type='button' onClick={() => onLeaveFeedback(bad)}>Bad</Button>
-    </OptionsWrapper>
-);
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+
+  const capitalizeFirstLetter = word => { return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
+   return (
+    <div>
+      <OptionsList>
+        {options.map(option => (
+          <li key={nanoid()}>
+            <Button
+              type='button'
+              onClick={() => onLeaveFeedback(option)}>
+              {capitalizeFirstLetter(option)}
+            </Button>
+          </li>
+        ))}
+      </OptionsList>
+    </div>
+  );
+};
 
 FeedbackOptions.propTypes = {
-  onClick: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.string),
+  onLeaveFeedback: PropTypes.func,
 };
 
 export default FeedbackOptions;
